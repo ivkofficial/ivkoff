@@ -521,6 +521,16 @@ body {
   background: rgba(250, 250, 250, 0.78);
 }
 
+.lesson-card--pros {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.45);
+}
+
+.lesson-card--cons {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.45);
+}
+
 .lesson-card h2 {
   margin: 0 0 10px;
   font-size: 1.08rem;
