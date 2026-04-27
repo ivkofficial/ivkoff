@@ -219,6 +219,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, minmax(180px, 1fr));
   gap: clamp(12px, 2vw, 22px);
+  overflow: visible;
 }
 
 .what {
@@ -531,12 +532,21 @@ body {
   z-index: 5;
   position: relative;
   transform: scale(1.5);
+  transform-origin: center center;
   cursor: zoom-out;
   box-shadow: 0 20px 34px rgba(20, 20, 20, 0.24);
 }
 
 .work-card.is-expanded:hover {
   transform: scale(1.5);
+}
+
+.featured__grid .work-card:first-child.is-expanded {
+  transform-origin: left center;
+}
+
+.featured__grid .work-card:last-child.is-expanded {
+  transform-origin: right center;
 }
 
 .about-card {
