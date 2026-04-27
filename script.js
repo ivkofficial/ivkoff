@@ -88,11 +88,19 @@ if (moneyRain) {
     const top = Math.random() * 88;
     const size = 72 + Math.random() * 68;
     const rotate = Math.floor(Math.random() * 60) - 30;
+    const driftX = Math.floor(Math.random() * 140) - 70;
+    const driftY = 45 + Math.random() * 80;
+    const duration = 12 + Math.random() * 12;
+    const delay = -Math.random() * duration;
 
     bill.style.left = `${left}%`;
     bill.style.top = `${top}%`;
     bill.style.setProperty("--size", `${size}px`);
     bill.style.setProperty("--start-rotate", `${rotate}deg`);
+    bill.style.setProperty("--drift-x", `${driftX}px`);
+    bill.style.setProperty("--drift-y", `${driftY}px`);
+    bill.style.setProperty("--drift-duration", `${duration}s`);
+    bill.style.setProperty("--drift-delay", `${delay}s`);
 
     moneyRain.appendChild(bill);
   }

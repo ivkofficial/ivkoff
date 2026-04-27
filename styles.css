@@ -466,11 +466,46 @@ body {
 }
 
 .lesson__lead {
+  font-size: clamp(1.8rem, 6vw, 3.2rem);
   margin: 0 auto 26px;
   max-width: 760px;
   text-align: center;
-  color: #4a4a4a;
+  color: #52c96a;
   line-height: 1.75;
+  text-shadow: 0 0 8px rgba(82, 201, 106, 0.85), 0 0 18px rgba(82, 201, 106, 0.6);
+}
+
+.bzach {
+  display: block;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 2px;
+  color: #4ad969;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 4.2vw, 2.1rem);
+  line-height: 1.4;
+}
+
+.bzach::before,
+.bzach::after {
+  content: "";
+  position: absolute;
+  left: -6%;
+  top: 50%;
+  width: 112%;
+  height: 3px;
+  background: #ff1e1e;
+  border-radius: 999px;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.bzach::before {
+  transform: translateY(-50%) rotate(20deg);
+}
+
+.bzach::after {
+  transform: translateY(-50%) rotate(-20deg);
 }
 
 .lesson__grid {
@@ -709,6 +744,8 @@ body {
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
   transform: rotate(var(--start-rotate, 0deg));
   transition: transform 0.35s ease, opacity 0.35s ease;
+  animation: moneyDrift var(--drift-duration, 18s) ease-in-out infinite;
+  animation-delay: var(--drift-delay, 0s);
 }
 
 @keyframes floatEngraving {
@@ -720,6 +757,23 @@ body {
   }
   100% {
     transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes moneyDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(var(--start-rotate, 0deg));
+    opacity: 0.16;
+  }
+  50% {
+    transform: translate3d(calc(var(--drift-x, 0px) * 0.5), calc(var(--drift-y, 60px) * -0.5), 0)
+      rotate(calc(var(--start-rotate, 0deg) + 8deg));
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(var(--drift-x, 0px), var(--drift-y, 60px), 0)
+      rotate(calc(var(--start-rotate, 0deg) - 10deg));
+    opacity: 0.18;
   }
 }
 
