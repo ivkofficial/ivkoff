@@ -784,6 +784,11 @@ body {
     gap: 30px;
   }
 
+  .social {
+    padding-top: 54px;
+    padding-bottom: 12px;
+  }
+
   .social img {
     width: min(62%, 130px);
     left: 50%;
@@ -791,11 +796,11 @@ body {
     margin: 0;
     aspect-ratio: 1 / 1;
     object-fit: contain;
-    transform: translate(-50%, -52%);
+    transform: translate(-50%, -42%);
   }
 
   .social span {
-    padding: 6px 8px 0;
+    padding: 2px 8px 0;
     font-size: 0.88rem;
   }
 
