@@ -759,6 +759,34 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .socials {
+    width: min(250px, 78vw);
+    margin: 28px auto 48px;
+    gap: 8px;
+  }
+
+  .social img {
+    width: min(68%, 150px);
+    margin: 10px auto 0;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .social span {
+    padding: 7px 8px;
+    font-size: 0.88rem;
+  }
+
+  .featured__cta {
+    width: 100%;
+  }
+
+  .featured__cta .btn-primary {
+    width: min(100%, 340px);
+    min-width: 0;
+    padding: 14px 20px;
+  }
+
   .training__title {
     margin-bottom: 4px;
   }
