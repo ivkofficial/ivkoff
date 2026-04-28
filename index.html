@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/jpeg" href="ava.jpg">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="icon" type="image/jpeg" href="ava.png">
 </head>
 <body>
   <div class="bg-engraving engraving-left" aria-hidden="true"></div>
@@ -33,7 +33,7 @@
     <section id="home" class="hero reveal">
       <p class="hero__kicker">Personal page</p>
       <h1 class="hero__title">IVKOFF</h1>
-      <p class="hero__subtitle">Всё, что человеческий разум способен понять и во что он способен поверить, достижимо. — Наполеон Хилл</p>
+      <p class="hero__subtitle">"Всё, что человеческий разум способен понять и во что он способен поверить, достижимо." - <span class="quote-author">Наполеон Хилл</span></p>
     </section>
 
     <section id="about" class="about-card reveal delay-1">
@@ -41,17 +41,29 @@
         <img
           class="about-card__photo"
           src="ya.jpg"
-          alt="My photo"
+          alt="Фото IVKOFF"
         >
       </div>
-      <article class="about-card__text">
+      <article class="about-card__text about-card__text--profile">
         <h2>IVKOFF.</h2>
-        <p>
-          ,,Не за яблоками надо тянуться, а яблони сажать"
+        <p class="about-card__lead">
+          Криптоаналитик, работающий в сферах сбора спреда, флипа, скальпинга.
         </p>
-        <p>
-          Криптоаналитик, работающий в сферах сбора спреда, флипа, скальпинга
-        </p>
+
+        <ul class="about-card__facts">
+          <li>
+            <span class="about-card__icon" aria-hidden="true">📈</span>
+            <p><strong>Статистика:</strong> Общий профит &gt; 500%.</p>
+          </li>
+          <li>
+            <span class="about-card__icon" aria-hidden="true">🤝</span>
+            <p><strong>Комьюнити:</strong> Основатель закрытого клуба "IVKOFF TRADING".</p>
+          </li>
+          <li>
+            <span class="about-card__icon" aria-hidden="true">🏅</span>
+            <p><strong>Опыт: </strong>Обучил уже 100+ учеников</p>
+          </li>
+        </ul>
       </article>
     </section>
 
