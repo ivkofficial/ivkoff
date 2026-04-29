@@ -105,3 +105,55 @@ if (moneyRain) {
     moneyRain.appendChild(bill);
   }
 }
+
+const heroSection = document.querySelector(".hero");
+const heroMobileWrap = document.querySelector(".hero__mobile-photo-wrap");
+const heroMobileOpen = document.querySelector(".hero__mobile-photo--open");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (heroMobileWrap && heroMobileOpen) {
+  const setMobileRatio = () => {
+    if (!heroMobileOpen.naturalWidth || !heroMobileOpen.naturalHeight) return;
+    heroMobileWrap.style.setProperty(
+      "--hero-mobile-ratio",
+      `${heroMobileOpen.naturalWidth} / ${heroMobileOpen.naturalHeight}`
+    );
+  };
+
+  if (heroMobileOpen.complete) {
+    setMobileRatio();
+  } else {
+    heroMobileOpen.addEventListener("load", setMobileRatio, { once: true });
+  }
+}
+
+if (heroSection && !reduceMotion.matches) {
+  const minBlinkDelay = 900;
+  const maxBlinkDelay = 3200;
+  const blinkDuration = 230;
+  const doubleBlinkChance = 0.38;
+
+  const blinkOnce = () => {
+    heroSection.classList.add("is-blinking");
+    window.setTimeout(() => {
+      heroSection.classList.remove("is-blinking");
+    }, blinkDuration);
+  };
+
+  const scheduleBlink = () => {
+    const nextDelay = minBlinkDelay + Math.random() * (maxBlinkDelay - minBlinkDelay);
+
+    window.setTimeout(() => {
+      blinkOnce();
+
+      if (Math.random() < doubleBlinkChance) {
+        const secondBlinkDelay = 140 + Math.random() * 180;
+        window.setTimeout(blinkOnce, secondBlinkDelay);
+      }
+
+      scheduleBlink();
+    }, nextDelay);
+  };
+
+  scheduleBlink();
+}
