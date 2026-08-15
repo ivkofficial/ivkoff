@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=5">
   <link rel="icon" type="image/jpeg" href="ava.png">
 </head>
 <body>
@@ -77,16 +77,19 @@
           </label>
 
           <button class="btn-primary sphere-form__submit" type="submit">Отправить</button>
+          <p class="sphere-form__cooldown" id="sphere-cooldown" hidden></p>
         </form>
-
-        <div class="sphere-form__success" id="sphere-success" hidden>
-          <h2>Заявка отправлена</h2>
-          <p>Скоро свяжусь с вами в Telegram.</p>
-          <a class="btn-primary" href="education.html">Вернуться к обучению</a>
-        </div>
       </div>
     </section>
   </main>
+
+  <div class="sphere-modal" id="sphere-modal" hidden>
+    <div class="sphere-modal__backdrop" data-close-modal></div>
+    <div class="sphere-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="sphere-modal-title">
+      <p class="sphere-modal__title" id="sphere-modal-title">Готово! Ожидайте, наш менеджер свяжется с вами в ближайшее время!</p>
+      <button class="btn-primary sphere-modal__close" type="button" data-close-modal>Понятно</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -159,12 +159,74 @@ if (heroSection && !reduceMotion.matches) {
 }
 
 const sphereForm = document.getElementById("sphere-form");
-const sphereSuccess = document.getElementById("sphere-success");
+const sphereModal = document.getElementById("sphere-modal");
+const sphereCooldownNote = document.getElementById("sphere-cooldown");
 
-if (sphereForm && sphereSuccess) {
+if (sphereForm && sphereModal) {
+  const SPHERE_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+  const SPHERE_COOLDOWN_KEY = "sphereFormCooldownUntil";
+  const submitButton = sphereForm.querySelector(".sphere-form__submit");
   let sphereSubmitting = false;
 
+  const getCooldownRemaining = () => {
+    const until = Number(localStorage.getItem(SPHERE_COOLDOWN_KEY) || 0);
+    return Math.max(0, until - Date.now());
+  };
+
+  const formatCooldown = (ms) => {
+    const totalMinutes = Math.ceil(ms / 60000);
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    if (hours > 0 && minutes > 0) return `${hours} ч ${minutes} мин`;
+    if (hours > 0) return `${hours} ч`;
+    return `${Math.max(1, minutes)} мин`;
+  };
+
+  const applyCooldownState = () => {
+    const remaining = getCooldownRemaining();
+    const locked = remaining > 0;
+
+    if (submitButton) {
+      submitButton.disabled = locked || sphereSubmitting;
+      if (!sphereSubmitting) {
+        submitButton.textContent = locked ? "Заявка уже отправлена" : "Отправить";
+      }
+    }
+
+    if (sphereCooldownNote) {
+      if (locked) {
+        sphereCooldownNote.hidden = false;
+        sphereCooldownNote.textContent = `Новую заявку можно отправить через ${formatCooldown(remaining)}.`;
+      } else {
+        sphereCooldownNote.hidden = true;
+        sphereCooldownNote.textContent = "";
+      }
+    }
+
+    return locked;
+  };
+
+  const openModal = () => {
+    sphereModal.hidden = false;
+    document.body.classList.add("sphere-modal-open");
+  };
+
+  const closeModal = () => {
+    sphereModal.hidden = true;
+    document.body.classList.remove("sphere-modal-open");
+  };
+
+  applyCooldownState();
+
   sphereForm.addEventListener("submit", (event) => {
+    if (getCooldownRemaining() > 0) {
+      event.preventDefault();
+      applyCooldownState();
+      openModal();
+      return;
+    }
+
     const fields = [...sphereForm.querySelectorAll(".sphere-form__input")];
     let isValid = true;
 
@@ -187,21 +249,31 @@ if (sphereForm && sphereSuccess) {
     }
 
     sphereSubmitting = true;
-    const submitButton = sphereForm.querySelector(".sphere-form__submit");
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.textContent = "Отправка…";
     }
 
+    localStorage.setItem(SPHERE_COOLDOWN_KEY, String(Date.now() + SPHERE_COOLDOWN_MS));
+
     window.setTimeout(() => {
-      sphereForm.hidden = true;
-      sphereSuccess.hidden = false;
-    }, 700);
+      sphereSubmitting = false;
+      applyCooldownState();
+      openModal();
+    }, 500);
   });
 
   sphereForm.querySelectorAll(".sphere-form__input").forEach((field) => {
     field.addEventListener("input", () => {
       if (field.value.trim()) field.classList.remove("is-invalid");
     });
+  });
+
+  sphereModal.querySelectorAll("[data-close-modal]").forEach((el) => {
+    el.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !sphereModal.hidden) closeModal();
   });
 }
