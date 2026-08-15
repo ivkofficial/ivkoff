@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Подбор сферы | ivkoff</title>
+  <meta name="description" content="Подбор сферы в крипте с ivkoff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" type="image/jpeg" href="ava.png">
+</head>
+<body>
+  <div class="bg-engraving engraving-left" aria-hidden="true"></div>
+  <div class="bg-engraving engraving-right" aria-hidden="true"></div>
+  <div class="money-rain" aria-hidden="true"></div>
+
+  <a class="back-arrow" href="education.html" aria-label="Назад на страницу обучения">&larr;</a>
+
+  <main class="page lesson-page">
+    <section class="sphere reveal is-visible">
+      <h1 class="sphere__title">Подбор сферы в крипте с ivkoff</h1>
+      <p class="sphere__lead">Заполните форму — помогу подобрать направление под вас</p>
+
+      <div class="sphere__card">
+        <iframe
+          class="sphere-form__frame"
+          name="sphere-form-target"
+          title="Отправка формы"
+          tabindex="-1"
+          aria-hidden="true"
+        ></iframe>
+
+        <form
+          class="sphere-form"
+          id="sphere-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfjbe5py2j5CR15bvbuMkByouJhkU-ODWI42DgNb-DGnEtvWw/formResponse"
+          method="POST"
+          target="sphere-form-target"
+          novalidate
+        >
+          <label class="sphere-form__field">
+            <span class="sphere-form__label">Имя</span>
+            <input
+              class="sphere-form__input"
+              type="text"
+              name="entry.57081497"
+              autocomplete="given-name"
+              placeholder="Введите имя"
+              required
+            >
+          </label>
+
+          <label class="sphere-form__field">
+            <span class="sphere-form__label">Фамилия</span>
+            <input
+              class="sphere-form__input"
+              type="text"
+              name="entry.1005375724"
+              autocomplete="family-name"
+              placeholder="Введите фамилию"
+              required
+            >
+          </label>
+
+          <label class="sphere-form__field">
+            <span class="sphere-form__label">Тег Telegram</span>
+            <input
+              class="sphere-form__input"
+              type="text"
+              name="entry.1023212943"
+              autocomplete="username"
+              placeholder="@username"
+              required
+            >
+          </label>
+
+          <button class="btn-primary sphere-form__submit" type="submit">Отправить</button>
+        </form>
+
+        <div class="sphere-form__success" id="sphere-success" hidden>
+          <h2>Заявка отправлена</h2>
+          <p>Скоро свяжусь с вами в Telegram.</p>
+          <a class="btn-primary" href="education.html">Вернуться к обучению</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -508,6 +508,133 @@ body {
   min-width: 180px;
 }
 
+.sphere {
+  margin-top: clamp(58px, 11vw, 110px);
+  padding-bottom: clamp(40px, 8vw, 80px);
+}
+
+.sphere__title {
+  margin: 0 0 12px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.55rem, 3.5vw, 2.7rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.sphere__lead {
+  margin: 0 auto 28px;
+  max-width: 420px;
+  text-align: center;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  line-height: 1.6;
+}
+
+.sphere__card {
+  width: min(480px, 100%);
+  margin: 0 auto;
+  padding: clamp(22px, 4vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(250, 250, 250, 0.9);
+  box-shadow: 0 14px 30px rgba(24, 24, 24, 0.06);
+}
+
+.sphere-form__frame {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.sphere-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sphere-form__submit:disabled {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
+}
+
+.sphere-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.sphere-form__label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.sphere-form__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sphere-form__input::placeholder {
+  color: #9a9a9a;
+}
+
+.sphere-form__input:focus {
+  border-color: rgba(30, 30, 30, 0.42);
+  box-shadow: 0 0 0 3px rgba(30, 30, 30, 0.08);
+}
+
+.sphere-form__input.is-invalid {
+  border-color: rgba(239, 68, 68, 0.65);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.sphere-form__submit {
+  width: 100%;
+  min-width: 0;
+  margin-top: 8px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+}
+
+.sphere-form__success {
+  text-align: center;
+}
+
+.sphere-form__success h2 {
+  margin: 8px 0 10px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 600;
+}
+
+.sphere-form__success p {
+  margin: 0 0 22px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.sphere-form__success .btn-primary {
+  width: 100%;
+  min-width: 0;
+}
+
 .lesson-page {
   width: min(920px, 92%);
   margin-inline: auto;
@@ -1115,6 +1242,35 @@ body {
 
   .lesson__title {
     margin-top: 12px;
+  }
+
+  .sphere__title {
+    margin-top: 12px;
+    padding-inline: 8px;
+  }
+
+  .sphere__lead {
+    margin-bottom: 22px;
+    padding-inline: 4px;
+  }
+
+  .sphere__card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .sphere-form {
+    gap: 16px;
+  }
+
+  .sphere-form__input {
+    min-height: 46px;
+    font-size: 16px;
+  }
+
+  .sphere-form__submit,
+  .sphere-form__success .btn-primary {
+    min-height: 52px;
   }
 }
 

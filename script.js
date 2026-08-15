@@ -157,3 +157,51 @@ if (heroSection && !reduceMotion.matches) {
 
   scheduleBlink();
 }
+
+const sphereForm = document.getElementById("sphere-form");
+const sphereSuccess = document.getElementById("sphere-success");
+
+if (sphereForm && sphereSuccess) {
+  let sphereSubmitting = false;
+
+  sphereForm.addEventListener("submit", (event) => {
+    const fields = [...sphereForm.querySelectorAll(".sphere-form__input")];
+    let isValid = true;
+
+    fields.forEach((field) => {
+      const empty = !field.value.trim();
+      field.classList.toggle("is-invalid", empty);
+      if (empty) isValid = false;
+    });
+
+    if (!isValid) {
+      event.preventDefault();
+      const firstInvalid = sphereForm.querySelector(".sphere-form__input.is-invalid");
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    if (sphereSubmitting) {
+      event.preventDefault();
+      return;
+    }
+
+    sphereSubmitting = true;
+    const submitButton = sphereForm.querySelector(".sphere-form__submit");
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Отправка…";
+    }
+
+    window.setTimeout(() => {
+      sphereForm.hidden = true;
+      sphereSuccess.hidden = false;
+    }, 700);
+  });
+
+  sphereForm.querySelectorAll(".sphere-form__input").forEach((field) => {
+    field.addEventListener("input", () => {
+      if (field.value.trim()) field.classList.remove("is-invalid");
+    });
+  });
+}
